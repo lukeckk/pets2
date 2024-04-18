@@ -18,9 +18,19 @@ $f3->route('GET /', function(){
     //echo below is used for testing before executing the template
 //    echo '<h1>Hello Pets 2</h1>';
 
-//    //Render a view page
+    //Render a view page
     $view = new Template();
     echo $view->render('views/home.html');
+});
+
+//Order Page
+$f3->route('GET /order', function(){
+    //echo below is used for testing before executing the template
+//    echo '<h1>Hello Pets 2</h1>';
+
+    //Render a view page
+    $view = new Template();
+    echo $view->render('views/pet-order.html');
 });
 
 //Run Fat-Free
