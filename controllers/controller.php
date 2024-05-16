@@ -29,7 +29,13 @@ class Controller
                 $this->_f3->set('SESSION.color', $color);
                 $this->_f3->set('SESSION.choice', $petChoice);
 
-                $this->_f3->reroute('summary');
+                if($petChoice == "robotic"){
+                    $this->_f3->reroute('robotic');
+                }
+                else{
+                    $this->_f3->reroute('stuffed');
+
+                }
 
             }
         }

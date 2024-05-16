@@ -29,6 +29,27 @@ $f3->route('GET /', function(){
         $GLOBALS['con']->roboticPet();
     });
 
+    //reroute to Robotic page
+    $f3->route('GET /robotic', function(){
+        //echo below is used for testing before executing the template
+    //    echo '<h1>Hello Pets 2</h1>';
+
+        //Render a view page
+        $view = new Template();
+        echo $view->render('views/roboticPets.html');
+    });
+
+    //reroute to Stuffed page
+    $f3->route('GET /stuffed', function(){
+        //echo below is used for testing before executing the template
+    //    echo '<h1>Hello Pets 2</h1>';
+
+        //Render a view page
+        $view = new Template();
+        echo $view->render('views/stuffedPet.html');
+    });
+
+
     $f3->route('GET /summary', function(){
         //echo below is used for testing before executing the template
 //    echo '<h1>Hello Pets 2</h1>';
