@@ -1,17 +1,15 @@
 <?php
 class RoboticPet extends Pet
 {
-    private $_accessories;
+    private $_accessories = [];
 
     /**
-     * @param $_accessories
+     * @param array $_accessories
      */
-    public function __construct($_accessories="")
+    public function __construct(array $_accessories)
     {
         $this->_accessories = $_accessories;
     }
-
-
 
 
 }
