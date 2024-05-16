@@ -11,6 +11,7 @@ require_once ('vendor/autoload.php');
 
 //Instantiate the F3 Base Class
 $f3 = Base::instance();
+$con = new Controller($f3);
 
 //Define a default route
 //https://kcheng.greenriverdev.com/328/hello-fat-free/
@@ -23,33 +24,10 @@ $f3->route('GET /', function(){
     echo $view->render('views/home.html');
 });
 
-//Order Page
-$f3->route('GET|POST /order', function($f3){
-    //Check if the form has been posted
-    if($_SERVER['REQUEST_METHOD'] == 'POST') {
-
-        //get the data
-        $pet = $_POST['pet'];
-        $color = $_POST['color'];
-
-        echo "post method";
-        //validate the data
-        if (empty($pet)) {
-            echo "Please supply a pet type";
-        } else {
-            echo "get method";
-            $f3->set('SESSION.pet', $pet);
-            $f3->set('SESSION.color', $color);
-
-            $f3->reroute('summary');
-
-        }
-    }
-
-    //Render a view page
-    $view = new Template();
-    echo $view->render('views/pet-order.html');
-});
+    //Order Page
+    $f3->route('GET|POST /order', function($f3){
+        $GLOBALS['con']->roboticPet();
+    });
 
     $f3->route('GET /summary', function(){
         //echo below is used for testing before executing the template
