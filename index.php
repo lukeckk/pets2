@@ -24,40 +24,47 @@ $f3->route('GET /', function(){
     echo $view->render('views/home.html');
 });
 
-    //Order Page
-    $f3->route('GET|POST /order', function($f3){
-        $GLOBALS['con']->roboticPet();
-    });
+//Order Page
+$f3->route('GET|POST /order', function(){
+    $GLOBALS['con']->Pet();
+});
 
-    //reroute to Robotic page
-    $f3->route('GET /robotic', function(){
-        //echo below is used for testing before executing the template
+//reroute to Robotic page
+$f3->route('GET /robotic', function(){
+    //echo below is used for testing before executing the template
+    //    echo '<h1>Hello Pets 2</h1>';
+    //Render a view page
+    $view = new Template();
+    echo $view->render('views/roboticPets.html');
+});
+
+//post roboticPetsform
+$f3->route('GET|POST /postRobotic', function (){
+    $GLOBALS['con']->roboticPet();
+});
+
+//reroute to Stuffed page
+$f3->route('GET /stuffed', function(){
+    //echo below is used for testing before executing the template
     //    echo '<h1>Hello Pets 2</h1>';
 
-        //Render a view page
-        $view = new Template();
-        echo $view->render('views/roboticPets.html');
-    });
+    //Render a view page
+    $view = new Template();
+    echo $view->render('views/stuffedPet.html');
+});
 
-    //reroute to Stuffed page
-    $f3->route('GET /stuffed', function(){
-        //echo below is used for testing before executing the template
-    //    echo '<h1>Hello Pets 2</h1>';
+$f3->route('GET|POST /postStuffed', function (){
+    $GLOBALS['con']->stuffedPet();
+});
 
-        //Render a view page
-        $view = new Template();
-        echo $view->render('views/stuffedPet.html');
-    });
-
-
-    $f3->route('GET /summary', function(){
-        //echo below is used for testing before executing the template
+$f3->route('GET /summary', function(){
+    //echo below is used for testing before executing the template
 //    echo '<h1>Hello Pets 2</h1>';
 
-        //Render a view page
-        $view = new Template();
-        echo $view->render('views/order-summary.html');
-    });
+    //Render a view page
+    $view = new Template();
+    echo $view->render('views/order-summary.html');
+});
 
 //Run Fat-Free
 $f3->run();

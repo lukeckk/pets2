@@ -8,8 +8,23 @@
     <title>Order Summary</title>
 </head>
 <body>
-    <h1>Thank you for ordering a {{ @SESSION.color }} {{ @SESSION.pet}} {{ @SESSION.choice}} </h1>
+    <h1>Thank you for ordering a {{ @SESSION.color }} {{ @SESSION.pet}}</h1>
 
+    <!-- Display Robotic Pet Attributes -->
+    <check if="{{ @SESSION.choice == 'robotic' }}">
+        <h3>Robotic Pet</h3>
+        <ul>
+            <repeat group="{{ @SESSION.roboticPet.getAccessories() }}" value="{{ @accessory }}">
+                <li>{{ @accessory }}</li>
+            </repeat>
+        </ul>
+    </check>
 
+    <!-- Display Stuffed Pet Attributes -->
+    <check if="{{ @SESSION.choice == 'stuffed' }}">
+        <h3>Stuffed Pet</h3>
+        <p>Size: {{ @SESSION.size }}</p>
+        <p>Material: {{ @SESSION.material }}</p>
+    </check>
 </body>
 </html>
