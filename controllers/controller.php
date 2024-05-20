@@ -70,7 +70,7 @@ class Controller
     }
     function roboticPet()
     {
-        if($_SERVER["REQUEST_METHOD"] = "POST"){
+        if($_SERVER["REQUEST_METHOD"] == "POST"){
 
             //get data
             $accessories = [];
